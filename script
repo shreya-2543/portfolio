@@ -1,0 +1,183 @@
+// JavaScript for navigation toggle, smooth scrolling, and form validation
+
+// 1. Mobile Navigation Toggle
+const navToggle = document.getElementById('nav-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const navMenuLinks = document.querySelectorAll('#nav-menu a, #mobile-menu a'); // Select links from both desktop and mobile menus
+
+// Event listener for the mobile navigation toggle button
+navToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide the mobile menu
+});
+
+// Close mobile menu when a link inside it is clicked
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden'); // Hide the mobile menu
+    });
+});
+
+// 2. Smooth Scrolling for Navigation Links
+navMenuLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent the default anchor click behavior (jumping)
+        const targetId = this.getAttribute('href').substring(1); // Get the section ID from the href (e.g., 'home', 'about')
+        const targetSection = document.getElementById(targetId); // Get the actual HTML element
+
+        if (targetSection) {
+            // Scroll to the target section with smooth behavior
+            // We subtract 70px to account for the fixed header's height, ensuring the section title isn't hidden
+            window.scrollTo({
+                top: targetSection.offsetTop - 70,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// 3. Form Validation for the Contact Form
+const contactForm = document.getElementById('contact-form');
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const messageInput = document.getElementById('message');
+const nameError = document.getElementById('name-error');
+const emailError = document.getElementById('email-error');
+const messageError = document.getElementById('message-error');
+const formMessage = document.getElementById('form-message'); // Element to display overall form submission status
+
+// Event listener for form submission
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the default form submission (page reload)
+
+    let isValid = true; // Flag to track overall form validity
+
+    // Reset all error messages and form status message before re-validating
+    nameError.classList.add('hidden');
+    emailError.classList.add('hidden');
+    messageError.classList.add('hidden');
+    formMessage.classList.add('hidden');
+    formMessage.classList.remove('bg-green-600', 'bg-red-600', 'text-white'); // Remove previous status styling
+
+    // Validate Name: Check if the name input is empty
+    if (nameInput.value.trim() === '') {
+        nameError.classList.remove('hidden'); // Show name error message
+        isValid = false;
+    }
+
+    // Validate Email: Check if the email input matches a basic email regex pattern
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value.trim())) {
+        emailError.classList.remove('hidden'); // Show email error message
+        isValid = false;
+    }
+
+    // Validate Message: Check if the message input is empty
+    if (messageInput.value.trim() === '') {
+        messageError.classList.remove('hidden'); // Show message error message
+        isValid = false;
+    }
+
+    // If all validations pass
+    if (isValid) {
+        // In a real-world application, you would send this form data to a server
+        // using fetch() API or XMLHttpRequest. For this example, we'll just log it.
+        console.log('Form Submitted Successfully!');
+        console.log('Name:', nameInput.value);
+        console.log('Email:', emailInput.value);
+        console.log('Message:', messageInput.value);
+
+        // Display success message to the user
+        formMessage.textContent = 'Message sent successfully! I will get back to you soon.';
+        formMessage.classList.remove('hidden');
+        formMessage.classList.add('bg-green-600', 'text-white'); // Apply success styling
+        contactForm.reset(); // Clear the form fields
+    } else {
+        // If validation fails, display a general error message
+        formMessage.textContent = 'Please correct the errors in the form.';
+        formMessage.classList.remove('hidden');
+        formMessage.classList.add('bg-red-600', 'text-white'); // Apply error styling
+    }
+});
+
+// 4. Fade-in on Scroll Animation for sections
+const sections = document.querySelectorAll('.fade-in'); // Select all elements with the 'fade-in' class
+
+// Options for the Intersection Observer
+const observerOptions = {
+    root: null, // The viewport is the root
+    rootMargin: '0px', // No margin around the root
+    threshold: 0.1 // Trigger when 10% of the target element is visible
+};
+
+// Create an Intersection Observer instance
+const sectionObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // If the section is intersecting the viewport, add the 'appear' class
+            entry.target.classList.add('appear');
+            observer.unobserve(entry.target); // Stop observing once the animation has been triggered
+        }
+    });
+}, observerOptions);
+
+// Observe each section
+sections.forEach(section => {
+    sectionObserver.observe(section);
+});
+
+// Initial check for elements already in view on page load
+// This ensures that sections visible on initial load also get the fade-in effect
+document.addEventListener('DOMContentLoaded', () => {
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        // Check if the section is within the viewport
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+            section.classList.add('appear');
+        }
+    });
+
+    // Start typing animation on page load
+    const typingElement = document.getElementById('typing-text');
+    // Customize these names/phrases for the typing animation
+    const namesToAnimate = ["Shreya Joshi", "A Web Developer", "A Designer", "AI/ML expert"];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 150; // milliseconds per character
+    const deletingSpeed = 100; // milliseconds per character
+    const delayBetweenWords = 1500; // milliseconds before typing next word
+
+    function typeWriter() {
+        const currentText = namesToAnimate[textIndex];
+        if (isDeleting) {
+            // Deleting text
+            typingElement.textContent = currentText.substring(0, charIndex--);
+            typingElement.classList.add('typing-cursor'); // Keep cursor visible during deletion
+        } else {
+            // Typing text
+            typingElement.textContent = currentText.substring(0, charIndex++);
+            typingElement.classList.add('typing-cursor'); // Keep cursor visible during typing
+        }
+
+        if (!isDeleting && charIndex > currentText.length) {
+            // Finished typing, start deleting after a delay
+            isDeleting = true;
+            typingElement.classList.remove('typing-cursor'); // Hide cursor before delay
+            setTimeout(() => {
+                typingElement.classList.add('typing-cursor'); // Show cursor again after delay
+                setTimeout(typeWriter, deletingSpeed); // Start deleting
+            }, delayBetweenWords);
+        } else if (isDeleting && charIndex < 0) {
+            // Finished deleting, move to next word
+            isDeleting = false;
+            textIndex = (textIndex + 1) % namesToAnimate.length; // Cycle through words
+            charIndex = 0;
+            setTimeout(typeWriter, typingSpeed); // Start typing next word
+        } else {
+            // Continue typing or deleting
+            setTimeout(typeWriter, isDeleting ? deletingSpeed : typingSpeed);
+        }
+    }
+
+    typeWriter(); // Initial call to start the animation
+});

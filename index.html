@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreya Joshi- Responsive Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="styles">
+</head>
+
+<body class="bg-gray-900 text-gray-100">
+
+    <!-- Navigation Bar -->
+    <header class="bg-gray-800 shadow-lg fixed w-full z-50">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="text-2xl font-bold text-white">shreya joshi</a>
+            <div class="md:hidden">
+                <button id="nav-toggle" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <ul id="nav-menu" class="hidden md:flex space-x-8">
+                <li><a href="#home" class="hover:text-blue-400 transition duration-300">Home</a></li>
+                <li><a href="#about" class="hover:text-blue-400 transition duration-300">About</a></li>
+                <li><a href="#skills" class="hover:text-blue-400 transition duration-300">Skills</a></li>
+                <li><a href="#projects" class="hover:text-blue-400 transition duration-300">Projects</a></li>
+                <li><a href="#contact" class="hover:text-blue-400 transition duration-300">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 pb-4">
+            <ul class="flex flex-col items-center space-y-4">
+                <li><a href="#home" class="block text-white hover:text-blue-400 transition duration-300 py-2">Home</a>
+                </li>
+                <li><a href="#about" class="block text-white hover:text-blue-400 transition duration-300 py-2">About</a>
+                </li>
+                <li><a href="#skills"
+                        class="block text-white hover:text-blue-400 transition duration-300 py-2">Skills</a></li>
+                <li><a href="#projects"
+                        class="block text-white hover:text-blue-400 transition duration-300 py-2">Projects</a></li>
+                <li><a href="#contact"
+                        class="block text-white hover:text-blue-400 transition duration-300 py-2">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="pt-20"> <!-- Padding top to account for fixed header -->
+
+        <!-- Hero Section -->
+        <section id="home"
+            class="h-screen flex items-center justify-center bg-gradient-to-r from-gray-900 to-gray-800 text-center px-6 fade-in">
+            <div class="max-w-3xl">
+                <!--img src="shreyajoshi.jpeg" alt="Your Profile Picture" class="rounded-full mx-auto mb-6 border-4 border-blue-500 shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"-->
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 text-white">Hi, I'm <span
+                        id="typing-text" class="text-blue-400"></span></h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">A passionate Web Developer focused on creating
+                    beautiful and functional web experiences.</p>
+                <a href="#projects" class="btn-primary">View My Work</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 md:py-24 bg-gray-800 px-6 fade-in">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-4xl font-bold text-center mb-12 text-white">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center md:space-x-12">
+                    <div class="md:w-1/3 mb-8 md:mb-0">
+                        <!-- Update this src to your about image, e.g., src="about-me.jpg" -->
+                        <img src="avatar.png" alt="About Me Image" class="rounded-xl shadow-lg w-full">
+                    </div>
+                    <div class="md:w-2/3 text-lg leading-relaxed text-gray-300">
+                        <p class="mb-4">Hello! I'm Shreya Joshi, a budding web developer with a keen interest in
+                            building responsive and user-friendly websites. My journey into web development started with
+                            a curiosity for how websites work, and it quickly grew into a passion for creating them.</p>
+                        <p class="mb-4">I'm currently focusing on mastering HTML, CSS, and JavaScript, and I'm excited
+                            to apply my growing knowledge to real-world projects. I believe in continuous learning and
+                            am always looking for new challenges to expand my skill set.</p>
+                        <p>When I'm not coding, you can find me exploring new technologies, reading tech blogs, or
+                            enjoying a good cup of coffee.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-16 md:py-24 bg-gray-900 px-6 fade-in">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-4xl font-bold text-center mb-12 text-white">My Skills</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card text-center">
+                        <h3 class="text-2xl font-semibold mb-0 text-blue-400">HTML5</h3>
+                        <p class="text-gray-300">Strong understanding of semantic HTML for structuring web content.</p>
+                    </div>
+                    <div class="card text-center">
+                        <h3 class="text-2xl font-semibold mb-4 text-blue-400">CSS3</h3>
+                        <p class="text-gray-300">Proficient in styling with CSS, including Flexbox, Grid, and responsive
+                            design.</p>
+                    </div>
+                    <div class="card text-center">
+                        <h3 class="text-2xl font-semibold mb-4 text-blue-400">JavaScript</h3>
+                        <p class="text-gray-300">Foundational knowledge of JavaScript for interactive web experiences
+                            and DOM manipulation.</p>
+                    </div>
+                    <div class="card text-center">
+                        <h3 class="text-2xl font-semibold mb-4 text-blue-400">Responsive Design</h3>
+                        <p class="text-gray-300">Ability to build websites that look great on all devices and screen
+                            sizes.</p>
+                    </div>
+                    <div class="card text-center">
+                        <h3 class="text-2xl font-semibold mb-4 text-blue-400">Git & GitHub</h3>
+                        <p class="text-gray-300">Basic version control skills for collaborative development.</p>
+                    </div>
+                    <div class="card text-center">
+                        <h3 class="text-2xl font-semibold mb-4 text-blue-400">Problem Solving</h3>
+                        <p class="text-gray-300">A logical approach to identifying and solving coding challenges.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 md:py-24 bg-gray-800 px-6 fade-in">
+            <div class="container mx-auto max-w-5xl">
+                <h2 class="text-4xl font-bold text-center mb-12 text-white">My Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Project 1 -->
+                    <div class="card">
+                        <!-- Update this src to your project 1 image, e.g., src="project1.jpg" -->
+                        <img src="https://placehold.co/600x400/334155/ffffff?text=Project+1" alt="Project 1 Thumbnail"
+                            class="rounded-lg mb-4 w-full h-auto">
+                        <h3 class="text-2xl font-semibold mb-2 text-blue-400">Project Title One</h3>
+                        <p class="text-gray-300 mb-4">A brief description of your first project. Highlight the
+                            technologies used (HTML, CSS, JS) and what you learned.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="btn-primary text-sm" target="_blank">Live Demo</a>
+                            <a href="#" class="btn-primary text-sm bg-gray-700 hover:bg-gray-600">GitHub Repo</a>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="card">
+                        <!-- Update this src to your project 2 image, e.g., src="project2.jpg" -->
+                        <img src="https://placehold.co/600x400/334155/ffffff?text=Project+2" alt="Project 2 Thumbnail"
+                            class="rounded-lg mb-4 w-full h-auto">
+                        <h3 class="text-2xl font-semibold mb-2 text-blue-400">Project Title Two</h3>
+                        <p class="text-gray-300 mb-4">A brief description of your second project. Explain its features
+                            and your contribution.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="btn-primary text-sm" target="_blank">Live Demo</a>
+                            <a href="#" class="btn-primary text-sm bg-gray-700 hover:bg-gray-600">GitHub Repo</a>
+                        </div>
+                    </div>
+                    <!-- Add more projects as you build them -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 md:py-24 bg-gray-900 px-6 fade-in">
+            <div class="container mx-auto max-w-2xl">
+                <h2 class="text-4xl font-bold text-center mb-12 text-white">Get In Touch</h2>
+                <form id="contact-form" class="bg-gray-800 p-8 rounded-xl shadow-lg">
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="input-field" placeholder="Your Name" required>
+                        <p id="name-error" class="text-red-400 text-sm mt-1 hidden">Name cannot be empty.</p>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="input-field"
+                            placeholder="your.email@example.com" required>
+                        <p id="email-error" class="text-red-400 text-sm mt-1 hidden">Please enter a valid email address.
+                        </p>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Message</label>
+                        <textarea id="message" name="message" rows="6" class="input-field" placeholder="Your message..."
+                            required></textarea>
+                        <p id="message-error" class="text-red-400 text-sm mt-1 hidden">Message cannot be empty.</p>
+                    </div>
+                    <button type="submit" class="btn-primary w-full">Send Message</button>
+                    <div id="form-message" class="mt-4 p-3 rounded-lg text-center hidden"></div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8 text-center text-gray-400 text-sm">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2025 Shreya Joshi. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-6">
+                <a href="https://www.linkedin.com/in/shreya-j-381a7126b"
+                    class="hover:text-blue-400 transition duration-300">LinkedIn</a>
+                <a href="https://github.com/shreya-2543" class="hover:text-blue-400 transition duration-300">GitHub</a>
+                <a href="#" class="hover:text-blue-400 transition duration-300">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link to your external JavaScript file -->
+    <script src="script"></script>
+</body>
+
+</html>

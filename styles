@@ -1,0 +1,66 @@
+/* General body styles and font */
+body {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1a202c; /* Dark background for the track */
+}
+::-webkit-scrollbar-thumb {
+    background: #4a5568; /* Grayish thumb */
+    border-radius: 4px; /* Rounded corners for the thumb */
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #718096; /* Lighter on hover */
+}
+
+/* Smooth scroll for internal links (redundant if already in body, but good for clarity) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced fade-in and slide-up animation for sections */
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px); /* Start further down for a more noticeable slide-up */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Longer transition for smoother effect */
+}
+.fade-in.appear {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to its final position */
+}
+
+/* Custom styles for professional look, using Tailwind's @apply directive */
+/* Primary button styling */
+.btn-primary {
+    /* Apply Tailwind classes for background, text color, padding, rounded corners, shadow, and hover effects */
+    @apply bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out;
+}
+
+/* Input field styling for forms */
+.input-field {
+    /* Apply Tailwind classes for full width, padding, rounded corners, border, background, text color, placeholder color, and focus effects */
+    @apply w-full p-3 rounded-lg border border-gray-700 bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+/* Card styling for skills and projects sections */
+.card {
+    /* Apply Tailwind classes for background, padding, rounded corners, shadow, and hover shadow effects */
+    @apply bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out;
+}
+
+/* Typing animation cursor blink effect */
+.typing-cursor {
+    border-right: 2px solid white; /* Blinking cursor */
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white; }
+}
